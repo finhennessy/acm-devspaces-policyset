@@ -12,11 +12,11 @@ policyDefaults:
   # Default remediation action for the policies
   remediationAction: enforce
   recreateOption: IfRequired
-  placement:
-    # Default placement rule with label definition for proper cluster selection
-    name: placement-devspaces
-    clusterSelectors:
-      env: dev
+  # placement:
+  #   # Default placement rule with label definition for proper cluster selection
+  #   name: placement-devspaces
+  #   clusterSelectors:
+  #     env: dev
 placementBindingDefaults:
   name: "binding-devspaces"
 # List of policies to be generated
@@ -31,3 +31,9 @@ policies:
       - path: checluster.yaml
       # - path: devspaces-clusterrole.yaml
       # - path: devspaces-application.yaml
+policySets:
+  - description: The DevSpaces Clusters policy set applies several policies
+      that will install DevSpaces.
+    name: devspaces-clusters
+    placement:
+      placementPath: input/devspaces-placement.yaml      
