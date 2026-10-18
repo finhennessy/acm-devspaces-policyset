@@ -7,6 +7,8 @@ metadata:
 policyDefaults:
   # Namespace where the policies are going to be created in
   namespace: policies
+  policySets:
+    - devspaces-clusters
   # Default remediation action for the policies
   remediationAction: enforce
   recreateOption: IfRequired
@@ -21,6 +23,8 @@ placementBindingDefaults:
 policies:
     # name of the policy
   - name: pol-devspaces
+    policySets:
+      - devspaces-clusters
     manifests:
       # reference to the manifests used as configuration templates 
       - path: subscription.yaml
