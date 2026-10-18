@@ -8,5 +8,4 @@ spec:
   - requiredClusterSelector:
       labelSelector:
         matchExpressions:
-          - {key: vendor, operator: In, values: ["OpenShift"]}
-          - {key: "env", operator: In, values: ["dev"]}
+          - {key: env, operator: In, values: ["dev"]}
