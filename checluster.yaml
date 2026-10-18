@@ -17,6 +17,6 @@ spec:
     defaultEditor: che-incubator/che-code/latest
     defaultNamespace:
       autoProvision: true
-      template: devuser-devspaces
+      template: <username>-devspaces
     storage:
       pvcStrategy: per-user
