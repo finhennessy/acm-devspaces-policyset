@@ -28,5 +28,6 @@ policies:
     manifests:
       # reference to the manifests used as configuration templates 
       - path: subscription.yaml
+      - path: checluster.yaml
       # - path: devspaces-clusterrole.yaml
       # - path: devspaces-application.yaml

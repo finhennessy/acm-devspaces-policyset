@@ -1,0 +1,22 @@
+apiVersion: org.eclipse.che/v2
+kind: CheCluster
+metadata:
+  name: devspaces
+  namespace: openshift-devspaces
+spec:
+  components:
+    cheServer:
+      debug: false
+      logLevel: INFO
+    metrics:
+      enable: true
+    pluginRegistry:
+      openVSXURL: https://open-vsx.org
+  devEnvironments:
+    startTimeoutSeconds: 300
+    defaultEditor: che-incubator/che-code/latest
+    defaultNamespace:
+      autoProvision: true
+      template: devuser-devspaces
+    storage:
+      pvcStrategy: per-user
