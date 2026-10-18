@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: openshift-gitops-devspaces-installer
+rules:
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "create", "update", "patch"]
+  - apiGroups: ["operators.coreos.com"]
+    resources: ["subscriptions", "operatorgroups"]
+    verbs: ["get", "list", "create", "update", "patch", "delete"]
+  - apiGroups: ["org.eclipse.che"]
+    resources: ["checlusters"]
+    verbs: ["get", "list", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: openshift-gitops-devspaces-installer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: openshift-gitops-devspaces-installer
+subjects:
+  - kind: ServiceAccount
+    name: openshift-gitops-argocd-application-controller
+    namespace: openshift-gitops

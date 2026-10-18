@@ -1,0 +1,28 @@
+# File policy-generator-config.yaml
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: devspaces
+## Policies default specification values
+policyDefaults:
+  # Namespace where the policies are going to be created in
+  namespace: policies
+  # Default remediation action for the policies
+  remediationAction: enforce
+  recreateOption: IfRequired
+  placement:
+    # Default placement rule with label definition for proper cluster selection
+    name: placement-devspaces
+    clusterSelectors:
+      env: dev
+placementBindingDefaults:
+  name: "binding-devspaces"
+# List of policies to be generated
+policies:
+    # name of the policy
+  - name: pol-devspaces
+    manifests:
+      # reference to the manifests used as configuration templates 
+      - path: subscription.yaml
+      # - path: devspaces-clusterrole.yaml
+      # - path: devspaces-application.yaml
